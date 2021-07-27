@@ -106,6 +106,7 @@ def create_main(d):
 
 def make_galleries_text_menu(d):
     items = []
+    items.append( a(div("אודות", cls="gal_text_menu_item"), href="about.html", cls="gal_text_a") )
     for name in INCLUDE_GALLERIES:
         gal = d.gal_by_name[name]
         #items.append(div(a(gal.title, href=gal.link(), cls="gal_text_a"), cls="gal_text_menu_item"))
@@ -153,12 +154,15 @@ def create_img_pages(d):
             cont += make_gal_disp_lst(im.gal)
             make_template(im.page(), cont, "order_disps()")
 
+def create_about():
+    make_template("about.html", open(os.path.join(this_path, "about.html"), encoding="utf-8").read())
 
 def main():
     d = read_wp()
     create_main(d)
     create_gal_pages(d)
     create_img_pages(d)
+    create_about()
 
     print("done")
 

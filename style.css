@@ -2,6 +2,8 @@ body {
     direction: rtl;
     font-family: Tahoma;
     font-size: 16px;
+    margin: 0;
+    background-color: #fbf9f1;
 }
 a {
     color: black;
@@ -11,11 +13,16 @@ a:hover, a:active {
     outline: 0;
 }
 
+.ptitle {
+    background: url(res/banner.png) center no-repeat;
+    width: 1000px;
+    height: 50px;
+    margin: 0 auto 10px auto;
+}
 
 .gal_menu {
-    margin-left: auto;
-    margin-right: auto;
     width: 520px;
+    margin: 20px auto 0 auto;
 }
 .gal {
     position: relative;
@@ -101,7 +108,7 @@ a:hover, a:active {
     border-radius: 8px;
 }
 .im_next_div:hover, .im_prev_div:hover {
-    background-color: #f6f5f5;
+    background-color: #f7f3e0;
 }
 .im_prev_div {
     right: -60px;
@@ -117,15 +124,18 @@ a:hover, a:active {
     top: 50%;
     transform: translateY(-50%);
 }
-.im_prev_circ {
-    background: url(res/prev.png) center no-repeat;
-    background-color: #ddd;
+.im_prev_circ, .im_next_circ {
+    background-color: #efe9c9;
     border-radius: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.im_prev_circ {
+    background-image: url(res/prev.png);
+
 }
 .im_next_circ {
-    background: url(res/next.png) center no-repeat;;
-    background-color: #ddd;
-    border-radius: 20px;
+    background-image: url(res/next.png);
 }
 .im_next_a, .im_prev_a {
 }
@@ -149,4 +159,28 @@ a:hover, a:active {
 }
 .disp_im_a {
     display: block;
+}
+
+.about {
+    width: 900px;
+    margin: 0 auto 0 auto;
+    white-space: pre-wrap;;
+}
+
+.about_img {
+    float: left;
+}
+
+.about h3 {
+    margin: 0;
+    font-size: 140%;
+    font-weight: normal;
+}
+.about strong {
+    font-weight: bold;
+}
+
+.about a {
+    color: revert;
+    text-decoration: revert;
 }
