@@ -1,0 +1,152 @@
+body {
+    direction: rtl;
+    font-family: Tahoma;
+    font-size: 16px;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover, a:active {
+    outline: 0;
+}
+
+
+.gal_menu {
+    margin-left: auto;
+    margin-right: auto;
+    width: 520px;
+}
+.gal {
+    position: relative;
+    margin: 0 0 10px 0;
+}
+.gal_a {
+
+}
+.main_gal_img {
+    vertical-align: middle;
+}
+.main_gal_text {
+    position: absolute;
+    top: 0;
+    color: #ffffff;
+    font-size: 24px;
+    margin: 10px 20px 0 0;
+    text-shadow: 0 0 4px black, 0 0 6px black;
+}
+
+
+.gal_text_menu {
+    position: absolute;
+    margin: 40px 20px 0 0;
+}
+.gal_text_menu_item {
+    margin: 0 0 10px 0;
+    padding: 4px;
+    /*background: #ededed;*/
+    /*border: 0.5px solid #d1d1d1;*/
+    border-radius: 3px;
+    color: #000;
+    height: 20px;
+    width: 100px;
+    /*text-align: center;*/
+    font-size: 18px;
+    transition: text-shadow 0.1s linear;
+}
+
+.gal_text_menu_item:hover {
+    text-shadow: 0 0 4px #888888;
+}
+
+.gal_view {
+    margin-left: auto;
+    margin-right: auto;
+}
+.gal_title {
+    font-size: 200%;
+    margin: 0 0 10px 0;
+}
+
+.im_vert {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.im_horz {
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.im_full_img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.im_full_div {
+    position: relative;
+}
+.im_title {
+    font-size: 200%;
+    margin-bottom: 5px;
+}
+.im_desc {
+    margin-bottom: 5px;
+}
+
+.im_next_div, .im_prev_div {
+    position: absolute;
+    width: 40px;
+    height: calc( 100% - 60px);
+    top: 18px;
+    border-radius: 8px;
+}
+.im_next_div:hover, .im_prev_div:hover {
+    background-color: #f6f5f5;
+}
+.im_prev_div {
+    right: -60px;
+}
+.im_next_div {
+    right: calc( 100% + 20px );
+}
+.im_prev_circ, .im_next_circ {
+    width: 36px;
+    height: 36px;
+    margin: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.im_prev_circ {
+    background: url(res/prev.png) center no-repeat;
+    background-color: #ddd;
+    border-radius: 20px;
+}
+.im_next_circ {
+    background: url(res/next.png) center no-repeat;;
+    background-color: #ddd;
+    border-radius: 20px;
+}
+.im_next_a, .im_prev_a {
+}
+
+.disps {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    /* width set in js, overrides default */
+    width: 800px;
+}
+.disp_im_div {
+    width: 250px;
+    position: absolute;
+    padding: 0 0 15px 15px;
+    /* top, left set in js */
+}
+.disp_im {
+    width: 100%;
+    vertical-align: middle;
+}
+.disp_im_a {
+    display: block;
+}
