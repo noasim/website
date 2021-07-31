@@ -4,6 +4,7 @@ body {
     font-size: 16px;
     margin: 0;
     background-color: #fbf9f1;
+    overflow-x: hidden;
 }
 a {
     color: black;
@@ -13,11 +14,31 @@ a:hover, a:active {
     outline: 0;
 }
 
+.pagetop {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 0 0 10px 0;
+    overflow: hidden;
+}
+
 .ptitle {
-    background: url(res/banner.png) center no-repeat;
+    background: url(res/banner.png) right no-repeat;
     width: 1000px;
     height: 50px;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 0 auto;
+}
+
+.ham_but {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: url(res/hamburger.png) center no-repeat;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
 }
 
 .gal_menu {
@@ -47,6 +68,7 @@ a:hover, a:active {
 .gal_text_menu {
     position: absolute;
     margin: 40px 20px 0 0;
+    z-index: 1;
 }
 .gal_text_menu_item {
     margin: 0 0 10px 0;
@@ -73,6 +95,8 @@ a:hover, a:active {
 .gal_view {
     margin-left: auto;
     margin-right: auto;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 .gal_title {
     font-size: 200%;
@@ -187,4 +211,23 @@ a:hover, a:active {
 .about a {
     color: revert;
     text-decoration: revert;
+}
+
+
+@media (max-width: 1350px) and (min-width: 1130px) {
+    .disp_im_div {
+        width:200px;
+    }
+}
+
+@media (max-width: 1130px) {
+    .disp_im_div {
+        width:150px;
+    }
+}
+
+@media (max-width: 900px) {
+    .ham_but {
+        display: initial;
+    }
 }

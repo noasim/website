@@ -127,7 +127,7 @@ def make_galleries_text_menu(d, selected_gal):
             cls = (cls, "gal_selected")
         #items.append(div(a(gal.title, href=gal.link(), cls="gal_text_a"), cls="gal_text_menu_item"))
         items.append(a(div(gal.title, cls=cls), href=gal.link(), cls="gal_text_a"))
-    return div(*items, cls="gal_text_menu")
+    return div(*items, cls="gal_text_menu", idd="gal_text_menu")
 
 
 def make_gal_disp_lst(gal):
@@ -145,7 +145,7 @@ def create_gal_pages(d):
         cont = make_galleries_text_menu(d, gal)
         cont += div(div(gal.title, cls="gal_title"),
                     make_gal_disp_lst(gal), cls="gal_view", idd="gal_view")
-        make_template(gal.link(), cont, "order_disps()")
+        make_template(gal.link(), cont, "start_order_disps()")
 
 
 def create_img_pages(d):
@@ -168,7 +168,7 @@ def create_img_pages(d):
                             cls="im_full_div"),
                         cls=im_cls)
             cont += make_gal_disp_lst(im.gal)
-            make_template(im.page(), cont, "order_disps()")
+            make_template(im.page(), cont, "start_order_disps()")
 
 def create_about(d):
     cont = make_galleries_text_menu(d, "about")
