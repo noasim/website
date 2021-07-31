@@ -90,7 +90,7 @@ def img(src, title=None, cls=""):
 def make_template(filename, content, call=""):
     t = open(os.path.join(this_path, "template.html"), encoding="utf-8").read()
     t = t.replace("{content}", content).replace("{main_call}", call)
-    out_path = os.path.join(this_path, "out", filename)
+    out_path = os.path.join(this_path, "docs", filename)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     open(out_path, "w", encoding="utf-8").write(t)
     print("wrote", out_path)
@@ -153,7 +153,7 @@ def create_img_pages(d):
         gal = d.gal_by_name[name]
         # need to go over images in gallery to have a good order
         for i, im in enumerate(gal.images):
-            pim = PIL.Image.open(os.path.join(this_path, "out", im.full()))
+            pim = PIL.Image.open(os.path.join(this_path, "docs", im.full()))
             w, h = pim.size
             im_cls = "im_vert" if h > w else "im_horz"
             im_next = gal.images[(i + 1) % len(gal.images)]
