@@ -66,6 +66,10 @@ a:hover, a:active {
     text-shadow: 0 0 4px #888888;
 }
 
+.gal_selected {
+    text-shadow: 0 0 3px #888888;
+}
+
 .gal_view {
     margin-left: auto;
     margin-right: auto;
@@ -163,7 +167,7 @@ a:hover, a:active {
 
 .about {
     width: 900px;
-    margin: 0 auto 0 auto;
+    margin: 0 auto 40px auto;
     white-space: pre-wrap;;
 }
 

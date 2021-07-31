@@ -68,17 +68,21 @@ def read_wp():
 
 def div(*args, cls, idd=None):
     sid = "" if idd is None else ' id="'+idd+'"'
+    if isinstance(cls, tuple):
+        cls = " ".join(cls)
     return f'<div class="{cls}"{sid}>{"".join(args)}</div>'
 
 def a(*text, href, cls):
     if isinstance(text, tuple):
         text = "".join(text)
+    # assert os.path.exists(os.path.join(this_path, href)), "missing file " + href
     return f'<a href="{href}" class="{cls}">{text}</a>'
 
 def escape(s):
     return s.replace('\\"', '&quot;').replace('"', '&quot;').replace('\\', '').replace("\'", "'")
 
 def img(src, title=None, cls=""):
+    assert os.path.exists(os.path.join(this_path, src)), "missing file " + src
     titl = "" if title is None else title
     return f'<img src="{src}"{titl} class="{cls}">'
 
@@ -96,21 +100,33 @@ INCLUDE_GALLERIES = ["drawing", "painting", "new_works", "hatachana", "bezalel"]
 
 def create_main(d):
     items = []
+    def add_item(title, image, link):
+        items.append(div(a(img(src=image, cls="main_gal_img"),
+                           div(title, cls="main_gal_text"), href=link, cls="gal_a"), cls="gal"))
+
+    add_item("אודות", "imgs/comics-index/comics_desc.jpg", "about.html")
     for name in INCLUDE_GALLERIES:
         gal = d.gal_by_name[name]
-        items.append(div(a(img(src=gal.preview_img(d).full(), cls="main_gal_img"),
-                           div(gal.title, cls="main_gal_text"), href=gal.link(), cls="gal_a"), cls="gal"))
+        add_item(gal.title, gal.preview_img(d).full(), gal.link())
+
     cont = div(*items, cls="gal_menu")
     make_template("index.html", cont)
 
 
-def make_galleries_text_menu(d):
+def make_galleries_text_menu(d, selected_gal):
     items = []
-    items.append( a(div("אודות", cls="gal_text_menu_item"), href="about.html", cls="gal_text_a") )
+    cls = "gal_text_menu_item"
+    if selected_gal == "about":
+        cls = (cls, "gal_selected")
+    items.append( a(div("אודות", cls=cls), href="about.html", cls="gal_text_a") )
+
     for name in INCLUDE_GALLERIES:
         gal = d.gal_by_name[name]
+        cls = "gal_text_menu_item"
+        if gal is selected_gal:
+            cls = (cls, "gal_selected")
         #items.append(div(a(gal.title, href=gal.link(), cls="gal_text_a"), cls="gal_text_menu_item"))
-        items.append(a(div(gal.title, cls="gal_text_menu_item"), href=gal.link(), cls="gal_text_a"))
+        items.append(a(div(gal.title, cls=cls), href=gal.link(), cls="gal_text_a"))
     return div(*items, cls="gal_text_menu")
 
 
@@ -126,7 +142,7 @@ def make_gal_disp_lst(gal):
 def create_gal_pages(d):
     for name in INCLUDE_GALLERIES:
         gal = d.gal_by_name[name]
-        cont = make_galleries_text_menu(d)
+        cont = make_galleries_text_menu(d, gal)
         cont += div(div(gal.title, cls="gal_title"),
                     make_gal_disp_lst(gal), cls="gal_view", idd="gal_view")
         make_template(gal.link(), cont, "order_disps()")
@@ -143,7 +159,7 @@ def create_img_pages(d):
             im_next = gal.images[(i + 1) % len(gal.images)]
             im_prev = gal.images[(i - 1) % len(gal.images)]
 
-            cont = make_galleries_text_menu(d)
+            cont = make_galleries_text_menu(d, gal)
             cont += div(div(im.title, cls="im_title"),
                         div(im.desc, cls="im_desc"),
                         div(a(div(div(cls="im_next_circ"), cls="im_next_div"), href=im_next.page(), cls="im_next_a"),
@@ -154,15 +170,17 @@ def create_img_pages(d):
             cont += make_gal_disp_lst(im.gal)
             make_template(im.page(), cont, "order_disps()")
 
-def create_about():
-    make_template("about.html", open(os.path.join(this_path, "about.html"), encoding="utf-8").read())
+def create_about(d):
+    cont = make_galleries_text_menu(d, "about")
+    cont += open(os.path.join(this_path, "about.html"), encoding="utf-8").read()
+    make_template("about.html", cont)
 
 def main():
     d = read_wp()
     create_main(d)
     create_gal_pages(d)
     create_img_pages(d)
-    create_about()
+    create_about(d)
 
     print("done")
 
