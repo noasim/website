@@ -5,13 +5,22 @@
     <title>נועה סימון</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-2231125-2', 'auto');
+ga('send', 'pageview');
+</script>
     <link rel="stylesheet" href="style.css?v=1.0">
     <script src="main.js"></script>
 </head>
 <body onload="{main_call}">
     <div class="pagetop">
         <a href="/"><div class="ptitle" title="נועה סימון, ציור, רישום, הדפס"></div></a>
-        <div class="ham_but" onclick="ham_click()"></div>
+        <div class="ham_but" id="ham_but" onclick="ham_click()"></div>
     </div>
     {content}
 </body>

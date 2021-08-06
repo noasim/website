@@ -1,6 +1,6 @@
 body {
     direction: rtl;
-    font-family: Tahoma;
+    font-family: Tahoma, Helvetica;
     font-size: 16px;
     margin: 0;
     background-color: #fbf9f1;
@@ -67,8 +67,10 @@ a:hover, a:active {
 
 .gal_text_menu {
     position: absolute;
-    margin: 40px 20px 0 0;
+    margin: 20px 10px 0px 0;
+    padding: 20px 10px 20px 40px;
     z-index: 1;
+    font-size: 18px;
 }
 .gal_text_menu_item {
     margin: 0 0 10px 0;
@@ -77,10 +79,9 @@ a:hover, a:active {
     /*border: 0.5px solid #d1d1d1;*/
     border-radius: 3px;
     color: #000;
-    height: 20px;
-    width: 100px;
+   /* height: 20px;*/
+   /* width: 100px;*/
     /*text-align: center;*/
-    font-size: 18px;
     transition: text-shadow 0.1s linear;
 }
 
@@ -103,19 +104,24 @@ a:hover, a:active {
     margin: 0 0 10px 0;
 }
 
-.im_vert {
-    width: 700px;
+.im_vert, .im_horz {
     margin-left: auto;
     margin-right: auto;
+    padding: 0 7px 0 7px;
+    margin-bottom: 20px;
+}
+
+.im_vert {
+    /*width: 700px;*/
+    max-width: 700px;
+
 }
 .im_horz {
-    width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 900px;
 }
 .im_full_img {
     width: 100%;
-    margin-bottom: 20px;
+    vertical-align: middle;
 }
 .im_full_div {
     position: relative;
@@ -214,9 +220,12 @@ a:hover, a:active {
 }
 
 
-@media (max-width: 1350px) and (min-width: 1130px) {
+@media (max-width: 1250px) and (min-width: 1130px) {
     .disp_im_div {
         width:200px;
+    }
+    .im_horz {
+        max-width: 800px;
     }
 }
 
@@ -224,10 +233,50 @@ a:hover, a:active {
     .disp_im_div {
         width:150px;
     }
+    .im_horz {
+        max-width: 700px;
+    }
 }
 
 @media (max-width: 900px) {
     .ham_but {
         display: initial;
+    }
+    .gal_text_menu {
+        background-color: #f7eec8;
+        border-radius: 4px;
+        box-shadow: 0 0 5px #090909;
+        display: none;
+    }
+}
+
+@media (pointer:none), (pointer:coarse) {
+    .gal_text_menu {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 840px) {
+    .im_next_div, .im_prev_div {
+        position: absolute;
+        width: 35%;
+        height: 40px;
+        top: calc( 100% + 10px );
+        border-radius: 8px;
+    }
+    .im_next_div {
+        right: calc( 100% - 35%);
+    }
+    .im_prev_circ, .im_next_circ {
+        left: 50%;
+        transform: translate(-50%, 0);
+        top: 0;
+    }
+
+    .im_prev_div {
+        right: 0;
+    }
+    .im_vert, .im_horz {
+        margin-bottom: 60px;
     }
 }

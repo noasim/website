@@ -38,10 +38,13 @@ function order_disps()
 function start_order_disps()
 {
     order_disps()
-    show_menu()
     window.addEventListener("resize", ()=>{
         order_disps()
         show_menu()
+    })
+    window.addEventListener("click", (e)=>{
+        if (menu_visible && e.target !== ham_but) // dismiss it
+            side_menu_toggle()
     })
 }
 
@@ -53,12 +56,14 @@ function side_menu_toggle() {
 }
 
 function show_menu() {
+    if (gal_text_menu === undefined)
+        return
     const small_screen = window.matchMedia("(max-width: 900px)").matches
     gal_text_menu.style.display = (!small_screen || menu_visible) ? "initial" : "none"
 }
-
 
 function ham_click()
 {
     side_menu_toggle()
 }
+
