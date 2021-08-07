@@ -42,12 +42,15 @@ a:hover, a:active {
 }
 
 .gal_menu {
-    width: 520px;
+    /*width: 100%;*/
     margin: 20px auto 0 auto;
+    padding: 0 7px 0 7px;
+    overflow-x: hidden;
 }
 .gal {
     position: relative;
     margin: 0 0 10px 0;
+    overflow: hidden;
 }
 .gal_a {
 
@@ -196,9 +199,10 @@ a:hover, a:active {
 }
 
 .about {
-    width: 900px;
+    max-width: 700px;
     margin: 0 auto 40px auto;
     white-space: pre-wrap;;
+    padding: 0 7px 0 7px;
 }
 
 .about_img {
@@ -217,6 +221,14 @@ a:hover, a:active {
 .about a {
     color: revert;
     text-decoration: revert;
+}
+.about .first_text {
+}
+.about_img {
+    margin: 0 5px 0 0;
+}
+.about_p {
+    margin: 0 0 3px 0;
 }
 
 

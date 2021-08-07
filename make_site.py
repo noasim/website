@@ -86,10 +86,11 @@ def img(src, title=None, cls=""):
     titl = "" if title is None else title
     return f'<img src="{src}"{titl} class="{cls}">'
 
+HAM_BUT = '<div class="ham_but" id="ham_but" onclick="ham_click()"></div>'
 
-def make_template(filename, content, call=""):
+def make_template(filename, content, call="", add_ham=True):
     t = open(os.path.join(this_path, "template.html"), encoding="utf-8").read()
-    t = t.replace("{content}", content).replace("{main_call}", call)
+    t = t.replace("{content}", content).replace("{main_call}", call).replace("{ham_but}", HAM_BUT if add_ham else "")
     out_path = os.path.join(this_path, filename)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     open(out_path, "w", encoding="utf-8").write(t)
@@ -110,7 +111,7 @@ def create_main(d):
         add_item(gal.title, gal.preview_img(d).full(), gal.link())
 
     cont = div(*items, cls="gal_menu")
-    make_template("index.html", cont)
+    make_template("index.html", cont, add_ham=False)
 
 
 def make_galleries_text_menu(d, selected_gal):

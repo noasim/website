@@ -56,8 +56,10 @@ function side_menu_toggle() {
 }
 
 function show_menu() {
-    if (gal_text_menu === undefined)
+    if (window.gal_text_menu === undefined) {
+        ham_but.style.display = "none"
         return
+    }
     const small_screen = window.matchMedia("(max-width: 900px)").matches
     gal_text_menu.style.display = (!small_screen || menu_visible) ? "initial" : "none"
 }
