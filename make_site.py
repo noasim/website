@@ -146,7 +146,8 @@ def create_gal_pages(d):
         cont = make_galleries_text_menu(d, gal)
         cont += div(div(gal.title, cls="gal_title"),
                     make_gal_disp_lst(gal), cls="gal_view", idd="gal_view")
-        make_template(gal.link(), cont, "start_order_disps()")
+        wcont = div(cont, cls="top_wrap")
+        make_template(gal.link(), wcont, "start_order_disps()")
 
 
 def create_img_pages(d):
@@ -169,12 +170,14 @@ def create_img_pages(d):
                             cls="im_full_div"),
                         cls=im_cls)
             cont += make_gal_disp_lst(im.gal)
-            make_template(im.page(), cont, "start_order_disps()")
+            wcont = div(cont, cls="top_wrap")
+            make_template(im.page(), wcont, "start_order_disps()")
 
 def create_about(d):
     cont = make_galleries_text_menu(d, "about")
     cont += open(os.path.join(this_path, "about_base.html"), encoding="utf-8").read()
-    make_template("about.html", cont)
+    wcont = div(cont, cls="top_wrap")
+    make_template("about.html", wcont)
 
 def main():
     d = read_wp()

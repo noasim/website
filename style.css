@@ -22,6 +22,11 @@ a:hover, a:active {
     overflow: hidden;
 }
 
+.top_wrap {
+    margin: 0 auto;
+    max-width: 1350px;
+}
+
 .ptitle {
     background: url(res/banner.png) right no-repeat;
     width: 1000px;
